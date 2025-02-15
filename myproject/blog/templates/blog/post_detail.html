@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post.title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 2em;
+            color: #333;
+        }
+        p {
+            line-height: 1.6;
+        }
+        .metadata {
+            font-style: italic;
+            color: #777;
+            margin-bottom: 20px;
+        }
+        .buttons a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-right: 10px;
+            text-decoration: none;
+            color: white;
+            background-color: #0275d8;
+            border-radius: 5px;
+        }
+        .buttons a.delete {
+            background-color: #d9534f;
+        }
+        .buttons a:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ post.title }}</h1>
+        <p class="metadata">Yayınlanma Tarihi: {{ post.created_at }}</p>
+        <p>{{ post.content }}</p>
+        <hr>
+        <div class="buttons">
+            <a href="{% url 'post_update' post.id %}">Düzenle</a>
+            <a href="{% url 'post_delete' post.id %}" class="delete">🗑️ Sil</a>
+            <a href="/">← Ana Sayfaya Dön</a>
+        </div>
+    </div>
+</body>
+</html>
